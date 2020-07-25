@@ -32,7 +32,7 @@ const config = {
     hot: false,
     contentBase: resolve(__dirname, 'dist/assets'),
     watchContentBase: true,
-    host: 'localhost',
+    host: '127.0.0.1',
     port: 8087,
     disableHostCheck: true,
     open: true,
@@ -44,10 +44,10 @@ const config = {
     proxy: [
       {
         context: ['/api', '/auth', '/ws'],
-        target: `http://localhost:${process.env.PORT || 8090}`,
+        target: `http://127.0.0.1:${process.env.PORT || 8090}`,
         secure: false,
         changeOrigin: true,
-        ws: (process.env.ENABLE_SOCKETS || false)
+        ws: process.env.ENABLE_SOCKETS || false
       }
     ]
   },
@@ -62,7 +62,7 @@ const config = {
           {
             loader: 'eslint-loader',
             options: {
-              cache: true,
+              cache: false,
 
               cacheIdentifer: eslintCacheIdentifier
             }
